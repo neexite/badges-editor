@@ -12,13 +12,19 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import { styled } from "@material-ui/core/styles";
 import ColorPicker from "material-ui-color-picker";
-import { ArrowBack } from "@material-ui/icons";
+import { ArrowBack, Block } from "@material-ui/icons";
+import { CirclePicker, TwitterPicker } from "react-color";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
   paper: {
+    padding: theme.spacing(2),
+    color: theme.palette.text.secondary,
+  },
+
+  preview: {
     padding: theme.spacing(2),
     color: theme.palette.text.secondary,
     position: "relative",
@@ -40,8 +46,6 @@ const Position2 = styled(ArrowBack)({
 const Position3 = styled(ArrowBack)({
   transform: `rotate(315deg)`,
 });
-
-
 
 const BadgeEditor = () => {
   const classes = useStyles();
@@ -81,10 +85,16 @@ const BadgeEditor = () => {
       color: "white",
       height: `${height}px`,
       width: `${width}px`,
-      lineHeight:  `${height}px`,
+      lineHeight: `${height}px`,
       textAlign: `center`,
       ...positions[position],
-    },
+    }, 
+    preview: {
+      display: 'inline-block',
+      width: `20px`,
+      height: `20px`,
+      background: bgColor,
+    }
   }));
   const badgeClasses = badgeStyles();
 
@@ -110,21 +120,32 @@ const BadgeEditor = () => {
               Position
             </Typography>
             <div>
-              <IconButton onClick={()=> setPosition(0)} color={position === 0 ? 'primary' : 'default'}>
+              <IconButton
+                onClick={() => setPosition(0)}
+                color={position === 0 ? "primary" : "default"}
+              >
                 <Position0 />
               </IconButton>
-              <IconButton onClick={()=> setPosition(1)} color={position === 1 ? 'primary' : 'default'}>
+              <IconButton
+                onClick={() => setPosition(1)}
+                color={position === 1 ? "primary" : "default"}
+              >
                 <Position1 />
               </IconButton>
             </div>
             <div>
-              <IconButton onClick={()=> setPosition(3)} color={position === 3 ? 'primary' : 'default'}>
+              <IconButton
+                onClick={() => setPosition(3)}
+                color={position === 3 ? "primary" : "default"}
+              >
                 <Position3 />
               </IconButton>
-              <IconButton onClick={()=> setPosition(2)} color={position === 2 ? 'primary' : 'default'}>
+              <IconButton
+                onClick={() => setPosition(2)}
+                color={position === 2 ? "primary" : "default"}
+              >
                 <Position2 />
               </IconButton>
-
             </div>
 
             <Typography id="width-slider" gutterBottom>
@@ -157,17 +178,15 @@ const BadgeEditor = () => {
               max={100}
               aria-labelledby="radius-slider"
             />
-
-            <ColorPicker
-              name="color"
-              defaultValue="Background Color"
-              value={bgColor}
-              onChange={(color) => setBgColor(color)}
+            <Typography gutterBottom>Background color <span className={badgeClasses.preview}/></Typography>
+            <TwitterPicker
+              color={bgColor}
+              onChangeComplete={(color) => setBgColor(color.hex)}
             />
           </Paper>
         </Grid>
         <Grid item xs={6}>
-          <Paper className={classes.paper}>
+          <Paper className={classes.preview}>
             <span className={badgeClasses.badge}>{text}</span>
           </Paper>
         </Grid>
@@ -177,7 +196,6 @@ const BadgeEditor = () => {
 };
 
 function App() {
-  const value = "World";
   return (
     <Container maxWidth="sm">
       <BadgeEditor />
