@@ -195,7 +195,7 @@ const BadgeEditor = () => {
 
 function App() {
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="md">
       <BadgeEditor />
     </Container>
   );
