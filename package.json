@@ -9,7 +9,6 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "material-ui-color": "^0.4.8",
-    "material-ui-color-picker": "^3.5.1",
     "react": "^16.12.0",
     "react-color": "^2.19.3",
     "react-dom": "^16.12.0",
