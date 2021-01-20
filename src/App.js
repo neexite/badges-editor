@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
-import DeleteIcon from "@material-ui/icons/Delete";
 import {
   Container,
   IconButton,
@@ -11,9 +10,8 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { styled } from "@material-ui/core/styles";
-import ColorPicker from "material-ui-color-picker";
-import { ArrowBack, Block } from "@material-ui/icons";
-import { CirclePicker, TwitterPicker } from "react-color";
+import { ArrowBack } from "@material-ui/icons";
+import { TwitterPicker } from "react-color";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -75,7 +73,7 @@ const BadgeEditor = () => {
     },
   ];
 
-  const badgeStyles = makeStyles((theme) => ({
+  const badgeStyles = makeStyles(() => ({
     badge: {
       display: "block",
       position: "absolute",
