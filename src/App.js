@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
     position: "relative",
     height: "400px",
+    width: "300px",
   },
 }));
 
